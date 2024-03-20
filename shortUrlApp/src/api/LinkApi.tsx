@@ -13,8 +13,8 @@ export const fetchShortLink = async (url: string, accessToken: string | undefine
     return response;
 }
 
-export const fetchUrlByToken = async (urlToken: string) => {
-    const response = await fetch(`${config.BACKEND_API_URL}/v1/links/${urlToken}`, {
+export const fetchUrlByToken = async (token: string | undefined) => {
+    const response = await fetch(`${config.BACKEND_API_URL}/v1/links/${token}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

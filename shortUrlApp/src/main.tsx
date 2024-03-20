@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "*",
+    path: "/:token",
     element: <RedirectUrl />,
   },
 ]);

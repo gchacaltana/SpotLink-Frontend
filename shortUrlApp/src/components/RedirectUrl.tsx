@@ -1,23 +1,24 @@
 import { useEffect } from 'react';
 import { fetchUrlByToken } from '../api/LinkApi';
-import { extractTokenFromURL } from '../utils/StringUtil';
+import { useParams } from 'react-router-dom';
+
 export const RedirectUrl = () => {
+    const { token } = useParams<{ token: string }>();
     useEffect(() => {
         const getUrlByToken = async () => {
             try {
-                const urlToken = extractTokenFromURL(window.location.pathname);
-                console.log("url token", urlToken);
-                if (!urlToken) {
+
+                if (token === undefined) {
                     window.location.href = "/";
                 }
-                
-                const response = await fetchUrlByToken(urlToken);
-                
+
+                const response = await fetchUrlByToken(token);
+
                 if (!response.ok) {
                     window.location.href = "/";
                 }
                 const json = (await response.json()) as { url: string };
-                
+
                 if (json.url) {
                     window.location.href = json.url;
                 }
