@@ -1,6 +1,6 @@
 import config from "./config.json";
 
-export const fetchShortLink = async (url: string, accessToken: string | undefined) => {
+export const createShortLink = async (url: string, accessToken: string | undefined) => {
     const response = await fetch(`${config.BACKEND_API_URL}/v1/links`, {
         method: "POST",
         headers: {
@@ -9,6 +9,18 @@ export const fetchShortLink = async (url: string, accessToken: string | undefine
             Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({ url }),
+    });
+    return response;
+}
+
+export const fetchLinksByUser = async (accessToken: string | undefined) => {
+    const response = await fetch(`${config.BACKEND_API_URL}/v1/links`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+        }
     });
     return response;
 }

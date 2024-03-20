@@ -292,3 +292,29 @@ nav ul li a:hover {
 .user-info-item span {
   margin-left: 10px;
 }
+
+.container-links {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px auto;
+}
+
+.tabla {
+  width: 85%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.tabla th,
+.tabla td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.tabla th {
+  background-color: #FFAA00;
+}

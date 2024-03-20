@@ -32,6 +32,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             <ul>
               <li><Link to="/admin">Cortar URL</Link></li>
               <li><Link to="/me">Mi Perfil</Link></li>
+              <li><Link to="/links">Mis Links</Link></li>
               <li><a href="#" onClick={handleLogout}>Cerrar Sesión</a></li>
             </ul>
           </nav>

@@ -7,6 +7,7 @@ import ProtectedRoute from "./routes/ProtectedRoute.tsx";
 import AdminPanel from "./components/AdminPanel.tsx";
 import { RedirectUrl } from './components/RedirectUrl.tsx';
 import './index.css';
+import LinkList from './components/LinkList.tsx';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/me",
         element: <Profile />,
+      },
+      {
+        path: "/links",
+        element: <LinkList />,
       },
     ],
   },

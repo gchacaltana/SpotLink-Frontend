@@ -6,6 +6,15 @@ export interface User {
     created_at: string;
 }
 
+export interface Link {
+    id: number;
+    url: string;
+    token: string;
+    user_id: number;
+    created_at: string;
+    created_at_format: string;
+}
+
 export interface AuthResponse {
     status: string;
     user: User;

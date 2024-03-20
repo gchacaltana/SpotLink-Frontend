@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { validateURL } from "../utils/StringUtil";
-import { fetchShortLink } from "../api/LinkApi";
+import { createShortLink } from "../api/LinkApi";
 import { useAuth } from "../providers/AuthProvider";
 import { LinkResponse } from "../types/types";
 
@@ -21,7 +21,7 @@ export const FormShortUrl = () => {
             }
             
             const accessToken = auth?.getAccessToken();
-            const response = await fetchShortLink(url, accessToken);
+            const response = await createShortLink(url, accessToken);
             if (!response.ok) {
                 const json = (await response.json()) as { message: string };
                 throw new Error(json.message);
