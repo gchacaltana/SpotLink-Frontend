@@ -11,15 +11,15 @@ export default function Profile() {
         <div className="user-info">
           <div className="user-info-item">
             <label>Email:</label>
-            <span>{auth.getAuthUser()?.email}</span>
+            <span>{auth?.getAuthUser()?.email}</span>
           </div>
           <div className="user-info-item">
             <label>Nombre:</label>
-            <span>{auth.getAuthUser()?.name}</span>
+            <span>{auth?.getAuthUser()?.name}</span>
           </div>
           <div className="user-info-item">
             <label>Fecha de creación:</label>
-            <span>{auth.getAuthUser()?.created_at}</span>
+            <span>{auth?.getAuthUser()?.created_at}</span>
           </div>
         </div>
       </div>

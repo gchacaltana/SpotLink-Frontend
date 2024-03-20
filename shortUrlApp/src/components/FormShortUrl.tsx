@@ -20,7 +20,7 @@ export const FormShortUrl = () => {
                 throw new Error("La URL ingresada no es válida");
             }
             
-            const accessToken = auth.getAccessToken();
+            const accessToken = auth?.getAccessToken();
             const response = await fetchShortLink(url, accessToken);
             if (!response.ok) {
                 const json = (await response.json()) as { message: string };
@@ -43,8 +43,7 @@ export const FormShortUrl = () => {
         shortenURL();
     }
 
-    function handleCopy(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
+    function handleCopy() {
         navigator.clipboard.writeText(shortUrl)
             .then(() => {
                 console.log('Texto copiado al portapapeles');

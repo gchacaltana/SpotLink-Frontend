@@ -13,7 +13,7 @@ export default function Login() {
 
     const auth = useAuth();
 
-    if (auth.isAuthenticated) {
+    if (auth?.isAuthenticated) {
         return <Navigate to="/admin" />;
     }
 
@@ -40,7 +40,7 @@ export default function Login() {
             }
             const json = (await response.json()) as AuthResponse;
             if (json.authorisation.token) {
-                auth.saveAuthUser(json);
+                auth?.saveAuthUser(json);
             }
         } catch (error: any) {
             setErrorResponse(error.message);
@@ -50,7 +50,7 @@ export default function Login() {
         <DefaultLayout>
             <div className="login-container">
                 <div className="logo">
-                    <img src="../public/images/logo_spotlink.png" alt="logo" />
+                    <img src="images/logo_spotlink.png" alt="logo" />
                 </div>
                 <form onSubmit={handleSubmit} className="login-form">
                     <h2>Iniciar Sesión</h2>

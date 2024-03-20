@@ -7,7 +7,7 @@ export default function AdminPanel() {
 
   return (
     <AdminLayout>
-        <h1>Bienvenido {auth.getAuthUser()?.name ?? ""}</h1>
+        <h1>Bienvenido {auth?.getAuthUser()?.name ?? ""}</h1>
         <FormShortUrl />
     </AdminLayout>
   );

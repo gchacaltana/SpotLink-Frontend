@@ -12,10 +12,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   async function handleLogout(e: MouseEvent) {
     e.preventDefault();
     try {
-      const accessToken = auth.getAccessToken();
+      const accessToken = auth?.getAccessToken();
       const response = await fetchLogout(accessToken);
       if (response.ok) {
-        auth.logout();
+        auth?.logout();
       }
     } catch (error) {
       console.log(error);
@@ -26,7 +26,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       <header>
         <div className="container-menu">
           <div className="logo">
-            <img src="public/images/logo_spotlink.png" alt="Logo" />
+            <img src="images/logo_spotlink.png" alt="Logo" />
           </div>
           <nav>
             <ul>
