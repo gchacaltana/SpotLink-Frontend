@@ -2,18 +2,20 @@ import { useContext, createContext, useState, useEffect } from "react";
 import type { AuthResponse, User } from "../types/types";
 import { fetchMe } from "../api/AuthApi";
 
-const AuthContext = createContext({
-    isAuthenticated: false,
-    getAccessToken: () => { },
+type ContextValueType = {
+    isAuthenticated: boolean;
+    getAccessToken: () => string;
     setAccessTokenAndRefreshToken: (
         _accessToken: string,
         _refreshToken: string
-    ) => { },
-    getRefreshToken: () => { },
-    saveAuthUser: (authResponse: AuthResponse) => { },
-    getAuthUser: () => ({} as User | undefined),
-    logout: () => { },
-});
+    ) => void;
+    getRefreshToken: () => string | null;
+    saveAuthUser: (authResponse: AuthResponse) => void;
+    getAuthUser: () => User | undefined;
+    logout: () => void;
+};
+
+const AuthContext = createContext<ContextValueType | undefined>(undefined);
 
 interface AuthProviderProps {
     children: React.ReactNode;
@@ -75,7 +77,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
 
     async function checkAuth() {
-        try {            
+        try {
             if (accessToken) {
                 const userInfo = await retrieveUserInfo(accessToken);
                 setUser(userInfo);
