@@ -82,4 +82,8 @@ npm run dev
 
 ![image Login](https://gonzch.com/img/cloud/spotlink/screen_04.jpg)
 
+## Integración con Github Actions
 
+* Al hacer un commit en la rama "master" se activa el workflow de Github Actions, se construye y publican las imagenes docker de la aplicación frontend.
+
+![image Workflow Github Actions](https://gonzch.com/img/cloud/spotlink/workflow_frontend.jpg)
