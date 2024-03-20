@@ -1,7 +1,7 @@
-import { API_URL } from "./constants";
+import config from "./config.json";
 
-export const fetchShortLink = async (url: string, accessToken: string) => {
-    const response = await fetch(`${API_URL}/v1/links`, {
+export const fetchShortLink = async (url: string, accessToken: string | undefined) => {
+    const response = await fetch(`${config.BACKEND_API_URL}/v1/links`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -14,7 +14,7 @@ export const fetchShortLink = async (url: string, accessToken: string) => {
 }
 
 export const fetchUrlByToken = async (urlToken: string) => {
-    const response = await fetch(`${API_URL}/v1/links/${urlToken}`, {
+    const response = await fetch(`${config.BACKEND_API_URL}/v1/links/${urlToken}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

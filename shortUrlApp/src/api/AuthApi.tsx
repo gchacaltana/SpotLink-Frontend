@@ -1,8 +1,8 @@
-import { API_URL } from "./constants";
 import { AuthResponse } from "../types/types";
+import config from "./config.json";
 
 export const fetchAuth = async (email: string, password: string) => {
-    const response = await fetch(`${API_URL}/login`, {
+    const response = await fetch(`${config.BACKEND_API_URL}/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -14,7 +14,7 @@ export const fetchAuth = async (email: string, password: string) => {
 }
 
 export const fetchRefreshAccessToken = async (accessToken: string) => {
-    const response = await fetch(`${API_URL}/refresh`, {
+    const response = await fetch(`${config.BACKEND_API_URL}/refresh`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -31,8 +31,8 @@ export const fetchRefreshAccessToken = async (accessToken: string) => {
     }
 }
 
-export const fetchLogout = async (accessToken: string) => {
-    const response = await fetch(`${API_URL}/logout`, {
+export const fetchLogout = async (accessToken: string | undefined) => {
+    const response = await fetch(`${config.BACKEND_API_URL}/logout`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export const fetchLogout = async (accessToken: string) => {
 }
 
 export const fetchMe = async (accessToken: string) => {
-    const response = await fetch(`${API_URL}/me`, {
+    const response = await fetch(`${config.BACKEND_API_URL}/me`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
