@@ -6,7 +6,7 @@ export interface User {
     created_at: string;
 }
 
-export interface Link {
+export interface ShortLink {
     id: number;
     url: string;
     token: string;

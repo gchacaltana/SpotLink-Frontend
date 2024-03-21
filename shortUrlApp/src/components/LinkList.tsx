@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import AdminLayout from "../layouts/AdminLayout";
 import { useAuth } from "../providers/AuthProvider";
 import { fetchLinksByUser } from "../api/LinkApi";
-import { Link } from "../types/types";
+import { ShortLink } from "../types/types";
+import { Link } from "react-router-dom";
 
 export const LinkList = () => {
   const auth = useAuth();
-  const [links, setLinks] = React.useState<Array<Link>>([]);
+  const [links, setLinks] = React.useState<Array<ShortLink>>([]);
   useEffect(() => {
     const fetchLinkList = async () => {
       try {
@@ -17,7 +18,7 @@ export const LinkList = () => {
           console.log("Error al obtener los links");
           return false;
         }
-        const json = (await response.json()) as Array<Link>;
+        const json = (await response.json()) as Array<ShortLink>;
         setLinks(json);
         return false;
       } catch (error: any) {
@@ -31,25 +32,20 @@ export const LinkList = () => {
     <AdminLayout>
       <h1>Mis Links</h1>
       <div className="container-links">
-        <table className="tabla">
-          <thead>
-            <tr>
-              <th>TOKEN</th>
-              <th>URL LARGA</th>
-              <th>FECHA CREACIÓN</th>
-            </tr>
-          </thead>
-          <tbody>
-            {links.map((link) => (
-              <tr key={link.id}>
-                <td>{link.token}</td>
-                <td>{link.url}</td>
-                <td>{link.created_at_format}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
+        <div className="table">
+          <div className="row header">
+            <div className="cell">URL CORTA</div>
+            <div className="cell">URL LARGA</div>
+            <div className="cell">FECHA CREACIÓN</div>
+          </div>
+          {links.map((link) => (
+            <div className="row" key={link.id}>
+              <div className="cell"><Link to={`${window.location.origin}/${link.token}`} target="_blank" rel="noopener noreferrer">{`${window.location.origin}/${link.token}`}</Link></div>
+              <div className="cell">{link.url}</div>
+              <div className="cell">{link.created_at_format}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </AdminLayout>
   );
