@@ -4,7 +4,7 @@ import { useAuth } from "../providers/AuthProvider";
 import { fetchLinksByUser } from "../api/LinkApi";
 import { Link } from "../types/types";
 
-export default function LinkList() {
+export const LinkList = () => {
   const auth = useAuth();
   const [links, setLinks] = React.useState<Array<Link>>([]);
   useEffect(() => {
