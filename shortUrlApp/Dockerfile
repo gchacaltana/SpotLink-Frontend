@@ -14,6 +14,11 @@ RUN npm i serve -g
 
 RUN npm i --production
 
+# Instala TypeScript globalmente
+RUN npm install -g typescript
+
+RUN npm run build
+
 EXPOSE 8080
 
 CMD ["npm","run","serve"]
